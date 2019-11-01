@@ -184,4 +184,27 @@ public class Board {
     private boolean isCellValueWrong(int i, int j) {
         return Integer.valueOf(this.grid[i][j]) != i * this.size + j + 1;
     }
+
+    /*
+     *           getGrid function:
+     *
+     *           gets a board and converts it to a human understandable grid which means, that
+     *           I am using this function to see the output of the movement that a.i. is making
+     *           in its head in each step.
+     *
+     */
+    public static String [][] getGrid(Board board){
+
+        return getGrid(board.toString());
+    }
+
+    public static String [][] getGrid(String s){
+
+        String [] row = s.split("\n");
+        String [][] grid = new String[row.length][row.length];
+        for (int i = 0; i < row.length; i++) {
+            grid[i] = row[i].split("\t");
+        }
+        return grid;
+    }
 }

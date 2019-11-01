@@ -1,5 +1,8 @@
 package client.algorithms.search;
 
+import client.algorithms.DataStructures;
+import client.algorithms.Queue;
+
 import server.Game.Board;
 import server.Game.Directions;
 
@@ -8,74 +11,78 @@ import server.Game.WrongMoveException;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class BFS implements Algorithm {
 
-    private Queue<String> queue;
+    private DataStructures dataStructures;
 
-    //          this map saves the path.
+    //              this map saves the path.
     private HashMap<String, String> giveChildGetParent;
 
-    //          which move was it from.
+    //              which move was it from.
     private HashMap<String, String> giveParentGetMove;
 
-    //          saves the ones already have been visited. in order to avoid repetition.
+    //              saves the ones already have been visited. in order to avoid repetition.
     private HashSet<String> visited;
+
+    //              the map required for each state to know how much cost it has been paid until now. (aka. g(N))
+    private HashMap<String ,Integer> giveStateGetG;
 
     @Override
     public String makeMove(String[][] grid) {
 
-        queue = new LinkedList<>();
+        dataStructures = getDataStructure();
 
-        //      this map saves the path.
+        //          this map saves the path.
         giveChildGetParent = new HashMap<>();
 
-        //      which move was it from.
+        //          which move was it from.
         giveParentGetMove = new HashMap<>();
 
-        //      saves the ones already have been visited. in order to avoid repetition.
+        //          saves the ones already have been visited. in order to avoid repetition.
         visited = new HashSet<>();
 
-        //      copies the grid and then uses it.
-        Board myVirtualBoard = new Board(3, grid);
-        //      current state.
-        String[][] currentState = getGrid(myVirtualBoard);
+        //              the map required for each state to know how much cost it has been paid until now. (aka. g(N))
+        giveStateGetG = new HashMap<>();
 
-        //      if the grid is already finished no need to do anything.
+        //          copies the grid and then uses it.
+        Board myVirtualBoard = new Board(3, grid);
+        //          current state.
+        String[][] currentState = Board.getGrid(myVirtualBoard);
+
+        //          if the grid is already finished no need to do anything.
         if (!myVirtualBoard.isFinished()) {
 
-           //  the expanding node should always get a visited tag.
+           //       the expanding node should always get a visited tag.
             visited.add(myVirtualBoard.toString());
 
-           /*   I need to save the move to know if
-            *   it turns out good I use it once the
-            *   graph is traversed. and returning by
-            *   keeping the parents in the hashMap
-            *   variable named giveChildGetParent.
+           /*       I need to save the move to know if
+            *       it turns out good I use it once the
+            *       graph is traversed. and returning by
+            *       keeping the parents in the hashMap
+            *       variable named giveChildGetParent.
             */
             try {
-                // -------------------------------------------------------- DOWN:
+                //  -------------------------------------------------------- DOWN:
                 initialProgress(myVirtualBoard, Directions.DOWN);
                 //  change back to the parent.
                 myVirtualBoard = new Board(3, currentState);
 
-                // -------------------------------------------------------- UP:
+                //  -------------------------------------------------------- UP:
                 initialProgress(myVirtualBoard, Directions.UP);
                 //  change back to the parent.
                 myVirtualBoard = new Board(3, currentState);
 
-                // -------------------------------------------------------- LEFT:
+                //  -------------------------------------------------------- LEFT:
                 initialProgress(myVirtualBoard, Directions.LEFT);
                 //  change back to the parent.
                 myVirtualBoard = new Board(3, currentState);
 
-                // -------------------------------------------------------- RIGHT:
+                //  -------------------------------------------------------- RIGHT:
                 initialProgress(myVirtualBoard, Directions.RIGHT);
 
-                // -------------------------------------------------------- Change state:
-                currentState = getGrid(queue.remove());
+                //  -------------------------------------------------------- Change state:
+                currentState = Board.getGrid(dataStructures.removeAccoringly().toString());
                 myVirtualBoard = new Board(3, currentState);
             }
             catch(ProduceTestingPassedException e){
@@ -98,14 +105,14 @@ public class BFS implements Algorithm {
                 inProgress(currentState, myVirtualBoard, Directions.UP);
                 myVirtualBoard = new Board(3, currentState);
 
-                inProgress(currentState, myVirtualBoard, Directions.RIGHT);
+                inProgress(currentState, myVirtualBoard, Directions.LEFT);
                 //  change back to the parent.
                 myVirtualBoard = new Board(3, currentState);
 
-                inProgress(currentState, myVirtualBoard, Directions.LEFT);
+                inProgress(currentState, myVirtualBoard, Directions.RIGHT);
 
                 //  change the state.
-                currentState = getGrid(queue.remove());
+                currentState = Board.getGrid(dataStructures.removeAccoringly().toString());
                 myVirtualBoard = new Board(3, currentState);
 
             }
@@ -118,7 +125,7 @@ public class BFS implements Algorithm {
 
                 while (giveChildGetParent.get(myVirtualBoard.toString()) != null) {
 
-                    currentState = getGrid(giveChildGetParent.get(myVirtualBoard.toString()));
+                    currentState = Board.getGrid(giveChildGetParent.get(myVirtualBoard.toString()));
                     myVirtualBoard = new Board(3, currentState);
                 }
                 String answer = giveParentGetMove.get(myVirtualBoard.toString());
@@ -139,31 +146,8 @@ public class BFS implements Algorithm {
             }
         }
 
-        // this eventually shouldn't happen.
+        //          this eventually shouldn't happen.
         return null;
-    }
-
-   /*
-    *           getGrid function:
-    *
-    *           gets a board and converts it to a human understandable grid which means, that
-    *           I am using this function to see the output of the movement that a.i. is making
-    *           in its head in each step.
-    *
-    */
-    private String [][] getGrid(Board board){
-
-        return getGrid(board.toString());
-    }
-
-    private String [][] getGrid(String s){
-
-        String [] row = s.split("\n");
-        String [][] grid = new String[row.length][row.length];
-        for (int i = 0; i < row.length; i++) {
-            grid[i] = row[i].split("\t");
-        }
-        return grid;
     }
 
     private void tryMove(Directions dir, Board myVirtualBoard) throws ProduceTestingPassedException{
@@ -176,12 +160,12 @@ public class BFS implements Algorithm {
             //      the searching has ended if this is true.
             if (myVirtualBoard.isFinished())
             /*
-                throwing exception makes the search and adding to the queue to stop because it is bfs
-                and it finds the solution once it has been produced after an expansion.
+                    throwing exception makes the search and adding to the queue to stop because it is bfs
+                    and it finds the solution once it has been produced after an expansion.
             */
                 throw new ProduceTestingPassedException();
-            //      add to the queue.
-            queue.add(myVirtualBoard.toString());
+            //      add to the data structure wether can be a queue or a stack or even a priority queue.
+            dataStructures.add(myVirtualBoard.toString());
         }
     }
 
@@ -192,6 +176,7 @@ public class BFS implements Algorithm {
             tryMove(dir, board);
             //      add the move to the corresponding board (itself not the parent which is the start state) map.
             giveParentGetMove.put(board.toString(), dir.toString());
+            giveStateGetG.put(board.toString(), 1);
         }
         catch (WrongMoveException e){
 
@@ -199,7 +184,7 @@ public class BFS implements Algorithm {
         }
         catch (ProduceTestingPassedException e){
 
-            //System.out.println(e);
+            System.out.println(e);
             giveParentGetMove.put(board.toString(), dir.toString());
             throw new ProduceTestingPassedException();
         }
@@ -208,13 +193,22 @@ public class BFS implements Algorithm {
     private void inProgress(String [][] currentState, Board board, Directions dir){
 
         try {
-            tryMove(dir, board);
-            //      added to the path. (used the Board toString() because i wanted it to be in the standard format).
+            // doesn't allow the board to go deeper and looks for another child.
+            /*if(giveStateGetG.get(board.toString()) <= 298)
+                System.out.println(giveStateGetG.get(board.toString()));*/
+            if(getLimit(giveStateGetG.get(board.toString()))) {
 
-            if(!visited.contains(board.toString()))
+                tryMove(dir, board);
+                //      added to the path. (used the Board toString() because i wanted it to be in the standard format).
 
-            giveChildGetParent.put(board.toString(),
-                    new Board(3, currentState).toString());
+                if (!visited.contains(board.toString())) {
+
+                    Board myCurrentStateBoard = new Board(3, currentState);
+                    giveChildGetParent.put(board.toString(),
+                            myCurrentStateBoard.toString());
+                    giveStateGetG.put(board.toString(), giveStateGetG.get(myCurrentStateBoard.toString()) + 1);
+                }
+            }
 
         }
         catch (WrongMoveException e){
@@ -229,5 +223,17 @@ public class BFS implements Algorithm {
                     new Board(3, currentState).toString());
             throw new ProduceTestingPassedException();
         }
+    }
+
+    //              getting the data structure needed for the algorithm.
+    //              (which follows the strategy design pattern in order to avoid duplication).
+    DataStructures<String> getDataStructure(){
+        return new Queue<String>();
+    }
+
+    //              checks if the limit is exceeded.
+    boolean getLimit(int depth){
+        return true;
+        // the limit for the DFS's depth.
     }
 }
