@@ -14,4 +14,9 @@ public class Queue<E> implements DataStructures<E>{
     public void add(E element) {
         queue.add(element);
     }
+
+    @Override
+    public int size() {
+        return queue.size();
+    }
 }

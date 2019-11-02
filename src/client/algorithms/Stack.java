@@ -11,4 +11,9 @@ public class Stack<E> implements DataStructures<E>{
     public void add(E element) {
         stack.push(element);
     }
+
+    @Override
+    public int size(){
+        return stack.size();
+    }
 }

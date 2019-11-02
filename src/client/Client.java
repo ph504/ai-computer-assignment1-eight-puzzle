@@ -21,11 +21,11 @@ public class Client {
 
 //  select your algorithm in this method (select one)
     private static Solver getSolver() {
-//      return new Solver(MAP_SIZE, new UserInputAlgorithm());
-//      return new Solver(MAP_SIZE, new DFS());
-        return new Solver(MAP_SIZE, new BFS());
-//      return new Solver(MAP_SIZE, new AStar());
-//      return new Solver(MAP_SIZE, new IDAStar());
+        //return new Solver(MAP_SIZE, new UserInputAlgorithm());
+        return new Solver(MAP_SIZE, new DFS());
+        //return new Solver(MAP_SIZE, new BFS());
+        //return new Solver(MAP_SIZE, new AStar());
+        //return new Solver(MAP_SIZE, new IDAStar());
     }
 
     private static void startGame(NetworkHandler networkHandler, String serverMessage, Solver solver) {

@@ -8,4 +8,5 @@ public interface DataStructures<E> {
 
     void add(E element);
     E removeAccoringly();
+    int size();
 }
