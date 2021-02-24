@@ -39,13 +39,13 @@ public class BFS implements Algorithm {
             return stackOfMoves.pop();
         }
         else{
-            return processAtOnce(grid);
+            return processOnce(grid);
         }
     }
     // -----------------------
 
     // ----------------------------------------------------------------------------------------------------------------------------
-    private String processAtOnce(String [][] grid){
+    private String processOnce(String [][] grid){
         dataStructures = getDataStructure();
 
         //          this map saves the path.
@@ -154,7 +154,7 @@ public class BFS implements Algorithm {
                 String answer = fillStackOfMoves(myVirtualBoard);
 
                 //  debug log:
-                System.out.println("a.i. made the move : " + answer);
+                // System.out.println("a.i. made the move : " + answer);
                 return answer;
             }
 
@@ -164,7 +164,7 @@ public class BFS implements Algorithm {
                 String answer = giveParentGetMove.get(myVirtualBoard.toString());
 
                 //  debug log:
-                System.out.println("a.i. made the move : " + answer);
+                // System.out.println("a.i. made the move : " + answer);
                 return answer;
             }
         }
@@ -178,7 +178,7 @@ public class BFS implements Algorithm {
     private void tryMove(Directions dir, Board myVirtualBoard) throws ProduceTestingPassedException{
 
             //      tries move. also changes the grid within the board.
-            myVirtualBoard.makeMove(dir);
+        myVirtualBoard.makeMove(dir);
 
         if(!visited.contains(myVirtualBoard.toString())) {
 
@@ -313,7 +313,7 @@ public class BFS implements Algorithm {
                     the detection is made after the search is complete in order to
                     avoid saving extra and useless information.
      */
-    private String getParentMove(String parent, String child){
+    static String getParentMove(String parent, String child){
 
         //          check for every direction in the Directions enum that if there is a move leading to the child in
         //          in order to add it to the stack.

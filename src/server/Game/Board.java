@@ -3,6 +3,7 @@ package server.Game;
 import java.util.*;
 
 public class Board {
+    public final static String FINISH_STATEMENT = "PROBLEM SOLVED!";
     private String[][] grid;
     private int size;
 

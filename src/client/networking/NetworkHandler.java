@@ -1,6 +1,7 @@
 package client.networking;
 
 import client.game.Solver;
+import server.Game.Board;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -10,6 +11,7 @@ import java.net.Socket;
 public class NetworkHandler {
     private DataInputStream dis;
     private DataOutputStream dos;
+
 
     public NetworkHandler() {
         try {
@@ -24,13 +26,17 @@ public class NetworkHandler {
 
     private String getMoveFromClient(String serverMessage, Solver solver) throws IOException {
         solver.fillGrid(serverMessage);
-        this.dos.writeUTF(solver.solve());
+        String clientMessage = solver.solve();
+        System.out.println("the player made the move : " + clientMessage);
+        this.dos.writeUTF(clientMessage);
         serverMessage = this.dis.readUTF();
         return serverMessage;
     }
 
     public String tryGetMoveFromClient(String serverMessage, Solver solver){
         try {
+            if(serverMessage.equals(Board.FINISH_STATEMENT))
+                return this.dis.readUTF();
             return this.getMoveFromClient(serverMessage, solver);
         }
         catch (IOException e){

@@ -6,6 +6,7 @@ import client.algorithms.search.DFS;
 import client.algorithms.search.IDAStar;
 import client.game.Solver;
 import client.networking.NetworkHandler;
+import server.Game.Board;
 
 
 public class Client {
@@ -22,18 +23,22 @@ public class Client {
 //  select your algorithm in this method (select one)
     private static Solver getSolver() {
         //return new Solver(MAP_SIZE, new UserInputAlgorithm());
-        return new Solver(MAP_SIZE, new DFS());
+        //return new Solver(MAP_SIZE, new DFS());
         //return new Solver(MAP_SIZE, new BFS());
         //return new Solver(MAP_SIZE, new AStar());
-        //return new Solver(MAP_SIZE, new IDAStar());
+        return new Solver(MAP_SIZE, new IDAStar());
     }
 
     private static void startGame(NetworkHandler networkHandler, String serverMessage, Solver solver) {
-        while (!serverMessage.equals("Finished!")) {
+        while (!serverMessage.equals(Board.FINISH_STATEMENT)) {
             System.out.print(serverMessage);
             serverMessage = networkHandler.tryGetMoveFromClient(serverMessage, solver);
         }
-        System.out.println(serverMessage);
+        System.out.println(serverMessage); // print finished!
+        serverMessage = networkHandler.tryGetMoveFromClient(serverMessage, solver);
+        System.out.println(serverMessage); // print the final situation of the board.
+
+
     }
 
 }

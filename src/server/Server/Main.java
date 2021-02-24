@@ -48,7 +48,7 @@ public class Main {
 
     private static void sendFinishedMessage(DataOutputStream dos, Board board) throws IOException {
 
-        dos.writeUTF("Finished!");
+        dos.writeUTF(Board.FINISH_STATEMENT);
         sendBoardToClient(dos, board);
     }
 
