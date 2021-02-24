@@ -8,6 +8,8 @@ import client.game.Solver;
 import client.networking.NetworkHandler;
 import server.Game.Board;
 
+import java.util.Scanner;
+
 
 public class Client {
 
@@ -22,11 +24,38 @@ public class Client {
 
 //  select your algorithm in this method (select one)
     private static Solver getSolver() {
-        //return new Solver(MAP_SIZE, new UserInputAlgorithm());
-        //return new Solver(MAP_SIZE, new DFS());
-        //return new Solver(MAP_SIZE, new BFS());
-        //return new Solver(MAP_SIZE, new AStar());
-        return new Solver(MAP_SIZE, new IDAStar());
+        System.out.println("please enter a number between 1 to 5 for the following commands : " +
+                "\n1. Play Yourself!" +
+                "\n2. A.I play with DFS algorithm!" +
+                "\n3. A.I. play with BFS algorithm!" +
+                "\n4. A.I. play with A* algorithm!" +
+                "\n5. A.I. ply with IDA* algorithm!");
+        Scanner input = new Scanner(System.in);
+        boolean failure = true;
+        while(failure) {
+            try {
+                failure = false;
+                switch (input.nextLine()) {
+                    case "1":
+                        return new Solver(MAP_SIZE, new UserInputAlgorithm());
+                    case "2":
+                        return new Solver(MAP_SIZE, new DFS());
+                    case "3":
+                        return new Solver(MAP_SIZE, new BFS());
+                    case "4":
+                        return new Solver(MAP_SIZE, new AStar());
+                    case "5":
+                        return new Solver(MAP_SIZE, new IDAStar());
+                    default:
+                        throw new RuntimeException();
+                }
+
+            } catch (RuntimeException e) {
+                failure = true;
+                System.out.println("invalid input please try again : ");
+            }
+        }
+        return new Solver(MAP_SIZE, new UserInputAlgorithm());
     }
 
     private static void startGame(NetworkHandler networkHandler, String serverMessage, Solver solver) {
