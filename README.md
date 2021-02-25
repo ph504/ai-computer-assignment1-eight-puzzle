@@ -185,7 +185,7 @@
 Firstly, all files should be compiled. and after that run the `/src/server/Server/Main.java` and the simply run the client in the path : `/src/client/Client.java`
 </details>
 
-<details>
+<details open="open">
   <summary>
 
 ### Using Terminal
@@ -204,7 +204,7 @@ now open another terminal and run the command below in the same directory `proje
 java client.Client
 ```
 </details>
-
+</details>
 <details open="open">
   <summary>
     
