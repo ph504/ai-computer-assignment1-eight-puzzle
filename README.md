@@ -36,6 +36,10 @@
     </li>
     <li>
       <a href="#build-and-run">Build and Run</a>
+      <ul>
+        <li><a href="#using-ide">Using IDE</a></li>
+        <li><a href="#using-terminal">Using Terminal</a></li>
+      </ul>
     </li>
     <li>
       <a href="#references">References</a>
@@ -52,14 +56,14 @@
 <!-- Eight Puzzle AKA. Sliding Puzzle -->
   <summary>
   
-  ## Eight Puzzle AKA. Sliding Puzzle
+## Eight Puzzle AKA. Sliding Puzzle
   </summary>
   
   <!-- what is eight puzzle? -->
   <details open="open">
   <summary>
     
-  ### what is eight puzzle though?
+### what is eight puzzle though?
   </summary>
   <br/>
   <p align="center">
@@ -84,7 +88,7 @@
   <details open="open">
     <summary>
 
-  ### Initial State
+### Initial State
     
   </summary>
     A random order of numbers like the table below:
@@ -120,7 +124,7 @@
   <details open="open">
   <summary>
       
-  ### Goal State __(Game Condition)__
+### Goal State __(Game Condition)__
 
   </summary>
   The board with an ascending order sequence from top-bottom and left-right. like the table below for a 3*3 board:
@@ -156,7 +160,7 @@
   <details open="open">
   <summary>
   
-  ### Actuators __(How to PLAY!)__
+### Actuators __(How to PLAY!)__
   </summary>
   you can move the blank cell <em><strong>UP, DOWN, LEFT</strong></em> and <em><strong>RIGHT</strong></em> if it doesn't exceed the limit of the board.
 
@@ -169,14 +173,42 @@
 <details open="open">
   <summary>
     
-  ## Build and Run
+## Build and Run
   </summary>
+  although running the project in IDEs such as Intellij is highly recommended, but here's how you can build and run the project in terminal:
+
+<details open="open">
+<summary>
+
+### Using IDE
+</summary>
+Firstly, all files should be compiled. and after that run the `/src/server/Server/Main.java` and the simply run the client in the path : `/src/client/Client.java`
+</details>
+
+<details>
+  <summary>
+
+### Using Terminal
+  </summary>
+
+First use the commands below in the project root to compile all the files and also to run.
+
+``` bash
+javac -d "bin" @paths.txt
+cd bin
+java server.Server.Main
+```
+now open another terminal and run the command below in the same directory `projectroot/bin/`
+
+```bash
+java client.Client
+```
 </details>
 
 <details open="open">
   <summary>
     
-  ## References
+## References
   </summary>
   <p>as for this readme there were a lot of useful websites which helped me a lot. (also mentioned people's awesome readmes for reference.)</p>
 
@@ -185,6 +217,7 @@
 
 ### about the Project
 </summary>
+
 1.
       <a href="https://www.javatpoint.com/agent-environment-in-ai">Agent Environments</a>
 

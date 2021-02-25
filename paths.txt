@@ -1,0 +1,17 @@
+./src/server/Server/Main.java
+./src/server/Game/Directions.java
+./src/server/Game/WrongMoveException.java
+./src/server/Game/Board.java
+./src/client/Client.java
+./src/client/networking/NetworkHandler.java
+./src/client/algorithms/UserInputAlgorithm.java
+./src/client/algorithms/Algorithm.java
+./src/client/algorithms/Queue.java
+./src/client/algorithms/search/ProduceTestingPassedException.java
+./src/client/algorithms/search/BFS.java
+./src/client/algorithms/search/DFS.java
+./src/client/algorithms/search/AStar.java
+./src/client/algorithms/search/IDAStar.java
+./src/client/algorithms/DataStructures.java
+./src/client/algorithms/Stack.java
+./src/client/game/Solver.java
