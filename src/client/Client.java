@@ -26,7 +26,7 @@ public class Client {
     private static Solver getSolver() {
         System.out.println("please enter a number between 1 to 5 for the following commands : " +
                 "\n1. Play Yourself!" +
-                "\n2. A.I play with DFS algorithm!" +
+                "\n2. A.I. play with DFS algorithm!" +
                 "\n3. A.I. play with BFS algorithm!" +
                 "\n4. A.I. play with A* algorithm!" +
                 "\n5. A.I. ply with IDA* algorithm!");
