@@ -179,9 +179,12 @@
   ## References
   </summary>
   <p>as for this readme there were a lot of useful websites which helped me a lot. (also mentioned people's awesome readmes for reference.)</p>
-  
-  ### about the Project
 
+<details open="open">
+<summary>
+
+### about the Project
+</summary>
 1.
       <a href="https://www.javatpoint.com/agent-environment-in-ai">Agent Environments</a>
 
@@ -202,16 +205,18 @@
 
 1. 
       <a href="https://en.wikipedia.org/wiki/Iterative_deepening_A*">more about IDA*</a>
-      
 1. 
       <a href="https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/">more about BFS</a>
 
 1. 
       <a href="https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/">more about DFS</a>
       
-
+</details>
+<details open="open">
+<summary>
 
 ### about the README
+</summary>
 
 1.
       <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes">about READMEs</a>
@@ -243,7 +248,7 @@
 1.
       <a href="https://github.com/othneildrew">@othneildrew</a>'s awesome <a href="https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/README.md">README.md</a> template.
       
-
+</details>
       
 </details>
 </body>
