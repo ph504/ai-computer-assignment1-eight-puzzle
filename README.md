@@ -26,17 +26,15 @@
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
-      <a href="#eight-puzzle-aka-sliding-puzzlet">Eight Puzzle AKA. Sliding Puzzle</a>
+      <a href="#eight-puzzle-aka-sliding-puzzle">Eight Puzzle AKA. Sliding Puzzle</a>
       <ul>
         <li><a href="#initial-state">Initial State</a></li>
+        <li><a href="#goal-state-game-condition">Goal State (Game Condition)</a></li>
+        <li><a href="#actuators-how-to-play">Actuators (How to PLAY!)</a></li>
       </ul>
     </li>
     <li>
       <a href="#build-and-run">Build and Run</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li>
       <a href="#references">References</a>
