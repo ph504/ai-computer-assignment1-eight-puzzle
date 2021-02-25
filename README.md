@@ -28,6 +28,7 @@
     <li>
       <a href="#eight-puzzle-aka-sliding-puzzle">Eight Puzzle AKA. Sliding Puzzle</a>
       <ul>
+        <li><a href="#what-is-eight-puzzle-though">What is eight puzzle?</a></li>
         <li><a href="#initial-state">Initial State</a></li>
         <li><a href="#goal-state-game-condition">Goal State (Game Condition)</a></li>
         <li><a href="#actuators-how-to-play">Actuators (How to PLAY!)</a></li>
@@ -56,7 +57,10 @@
   
   <!-- what is eight puzzle? -->
   <details open="open">
-    <summary><h3>what is eight puzzle though?</h3></summary>
+    <summary>
+      
+    ### what is eight puzzle though?
+    </summary>
     <br/>
     <p align="center">
       <img src="https://studio.cults3d.com/2Fn4F4daXOL1DKk2l8wkWgHsafE=/246x246/https://files.cults3d.com/uploaders/13634459/illustration-file/f2a3c195-bea9-4f1a-907f-f01974e14b17/Slider%20puzzle07.jpg"></img>
@@ -114,40 +118,40 @@
   
   <!-- goal state: -->
   <details open="open">
-  <summary>
-      
-  ### Goal State __(Game Condition)__
+    <summary>
+        
+    ### Goal State __(Game Condition)__
 
-  </summary>
-  The board with an ascending order sequence from top-bottom and left-right. like the table below for a 3*3 board:
-  
-  
-  <br/>
-  <br/>
-  <table align="center">
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>8</td>
-      <td> </td>
-    </tr>
-  </table>
+    </summary>
+    The board with an ascending order sequence from top-bottom and left-right. like the table below for a 3*3 board:
+    
+    
+    <br/>
+    <br/>
+    <table align="center">
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>8</td>
+        <td> </td>
+      </tr>
+    </table>
+    
+    <br/>
+    <br/>
+    <p align="center">
+      <img src="https://media.cheggcdn.com/media/a7d/a7d96cee-5e7a-45b6-b77e-7abda450cab4/phpGUTM6t"></img>
+    </p>
   </details>
-  <br/>
-  <br/>
-  <p align="center">
-    <img src="https://media.cheggcdn.com/media/a7d/a7d96cee-5e7a-45b6-b77e-7abda450cab4/phpGUTM6t"></img>
-  </p>
-
   <!-- Actuators (how to play!)-->
   <details open="open">
   <summary>
