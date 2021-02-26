@@ -182,7 +182,10 @@
 
 ### Using IDE
 </summary>
-Firstly, all files should be compiled. and after that run the `/src/server/Server/Main.java` and the simply run the client in the path : `/src/client/Client.java`
+Firstly, all files should be compiled. 
+
+After that run the `/src/server/Server/Main.java`
+and then simply run the client in the path : `/src/client/Client.java`
 </details>
 
 <details open="open">
