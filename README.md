@@ -208,6 +208,17 @@ java client.Client
 ```
 </details>
 </details>
+
+
+<details open="open">
+<summary>
+
+## License
+</summary>
+**[MIT](https://github.com/ph504/ai-computer-assignment1-eight-puzzle/LICENSE.md)**
+
+</details>
+
 <details open="open">
   <summary>
     
