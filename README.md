@@ -42,6 +42,9 @@
       </ul>
     </li>
     <li>
+      <a href="#license">License</a>
+    </li>
+    <li>
       <a href="#references">References</a>
       <ul>
         <li><a href="#about-the-project">about the Project</a></li>
@@ -215,7 +218,10 @@ java client.Client
 
 ## License
 </summary>
-**[MIT](https://github.com/ph504/ai-computer-assignment1-eight-puzzle/LICENSE.md)**
+<strong>
+  
+[MIT](https://github.com/ph504/ai-computer-assignment1-eight-puzzle/blob/master/LICENSE)
+</strong>
 
 </details>
 
